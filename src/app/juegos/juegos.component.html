@@ -1,0 +1,38 @@
+<div *ngIf="juegos?.length == 0" class="alert alert-info">
+  No hay juegos
+</div>
+
+<div class="my-5 pr-4 text-right">
+  <button class="btn btn-primary" type="button" routerLink="/juegos/form">Crear Juego</button>
+</div>
+
+ <div class="card border-primary mb-3" *ngIf="juegos?.length > 0">
+    <div class="card-header">Juegos</div>
+    <div class="card-body text-primary">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <th *ngIf="showId">ID</th>
+          <th>Título</th>
+          <th>Fecha Lanzamiento</th>
+          <th>Precio</th>
+          <th>PEGI</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let juego of juegos">
+            <td *ngIf="showId">{{juego.idJuego}}</td>
+            <td>{{juego.titulo}}</td>
+            <td>{{juego.fechaLanzamiento}}</td>
+            <td>{{juego.precio}}</td>
+            <td>{{juego.pegi}}</td>
+            <td>{{juego.categoria}}</td>
+            <td>
+              <button type="button" [routerLink]="['form', juego.idJuego]" class="btn btn-primary btn-sm">Editar</button>
+              <button type="button" (click)='delete(juego)' class="btn btn-danger btn-sm ml-2">Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

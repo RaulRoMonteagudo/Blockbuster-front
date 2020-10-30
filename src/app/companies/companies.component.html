@@ -1,0 +1,32 @@
+<div *ngIf="companies?.length == 0" class="alert alert-info">
+    no hay companies
+  </div>
+  
+  <div class="my-5 pr-4 text-right">
+    <button class="btn btn-primary" type="button" routerLink="/juegos/form">Crear Juego</button>
+  </div>
+  
+   <div class="card border-primary mb-3" *ngIf="companies?.length > 0">
+      <div class="card-header">Juegos</div>
+      <div class="card-body text-primary">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th *ngIf="showId">ID</th>
+            <th>Nombre</th>
+            <th>CIF</th>
+            <th>juegos</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let company of companies">
+              <td *ngIf="showId">{{company.id}</td>
+              <td>{{company.nombre}}</td>
+              <td>{{company.cif}}</td>
+              <td> 
+              <p *ngFor="let juego of company.juegos">
+                  {{juego.titulo}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
